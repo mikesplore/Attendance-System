@@ -160,7 +160,7 @@ fun StudentLogin(navController: NavController) {
                 Text(text = "Don't have an account? ")
                 Text(text = "Register",
                     modifier = Modifier.clickable {
-                        navController.navigate("RegisterStudent")
+                        navController.navigate("StudentRegister")
                     },
                     color = Color(0xff00A9FF))}
             Column(modifier = Modifier.fillMaxWidth(),

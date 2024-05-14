@@ -14,6 +14,7 @@ fun  NavGraph(){
         composable("TeacherLogin"){TeacherLogin(navController = navController)}
         composable("StudentLogin"){StudentLogin(navController = navController)}
         composable("TeacherRegister"){ TeacherRegister(navController = navController)}
+        composable("StudentRegister"){ StudentRegister(navController = navController)}
 
     }
 

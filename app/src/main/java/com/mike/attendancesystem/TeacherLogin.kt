@@ -162,7 +162,7 @@ fun TeacherLogin(navController: NavController) {
             Text(text = "Register",
                 color = Color(0xff00A9FF),
                 modifier = Modifier.clickable{
-                    navController.navigate("RegisterTeacher")
+                    navController.navigate("TeacherRegister")
                 })}
             Column(modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
