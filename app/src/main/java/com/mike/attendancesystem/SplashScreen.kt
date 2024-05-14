@@ -61,6 +61,7 @@ fun SplashScreen(navController: NavController){
             textAlign = TextAlign.End,
             modifier = Modifier
                 .clickable {
+                    navController.navigate("LoginChoice")
 
                 }
 

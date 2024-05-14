@@ -2,6 +2,7 @@ package com.mike.attendancesystem
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -159,13 +160,19 @@ fun TeacherLogin(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically) {
             Text(text = "Don't have an account? ")
             Text(text = "Register",
-                color = Color(0xff00A9FF))}
+                color = Color(0xff00A9FF),
+                modifier = Modifier.clickable{
+                    navController.navigate("RegisterTeacher")
+                })}
             Column(modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "Are you a student? ")
                 Text(text = "Click here",
                     color = Color(0xff00A9FF),
+                    modifier = Modifier.clickable{
+                        navController.navigate("StudentLogin")
+                    }
 
                 )
             }

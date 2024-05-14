@@ -2,6 +2,7 @@ package com.mike.attendancesystem
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -48,6 +49,9 @@ fun MainLogin(navController: NavController){
             //student part
             Box(
                 modifier = Modifier
+                    .clickable {
+                        navController.navigate("StudentLogin")
+                    }
                     .size(200.dp)
                     .shadow(10.dp, shape = RoundedCornerShape(20.dp))
             ) {
@@ -76,6 +80,9 @@ fun MainLogin(navController: NavController){
             //teacher part
             Box(
                 modifier = Modifier
+                    .clickable {
+                        navController.navigate("TeacherLogin")
+                    }
                     .size(200.dp)
                     .shadow(10.dp, shape = RoundedCornerShape(20.dp))
             ) {
