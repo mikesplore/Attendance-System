@@ -40,9 +40,11 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun TeacherLogin() {
+fun TeacherLogin(navController: NavController) {
     var email: String = ""
     Column(modifier = Modifier
         .fillMaxSize()
@@ -178,7 +180,7 @@ fun TeacherLogin() {
 @Preview
 @Composable
 fun TeacherloginPreview(){
-    TeacherLogin()
+    TeacherLogin(rememberNavController())
 
 
 }

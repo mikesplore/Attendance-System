@@ -18,12 +18,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            SplashScreen() // Show splash screen first
-            AttendanceSystemTheme {
-                // Your main content goes here
-            }
+            NavGraph()
+
         }
     }
+}
+
+@Preview
+@Composable
+fun navpreview(){
+    NavGraph()
 }
 
 
