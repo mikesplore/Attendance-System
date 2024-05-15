@@ -59,7 +59,9 @@ fun Student(navController: NavController) {
             TopAppBar(
                 title = { Text(text = "Student Profile") },
                 navigationIcon = {
-                    IconButton(onClick = {  }) {
+                    IconButton(onClick = {
+                        // Handle navigation icon click
+                    }) {
                         Icon(Icons.Filled.Menu, contentDescription = "Menu")
                     }
                 }
