@@ -271,7 +271,9 @@ fun BoxContent(navController: NavController) {
                 route = "resources",
                 navController = navController
             )
+
         }
+
     }
 }
 
