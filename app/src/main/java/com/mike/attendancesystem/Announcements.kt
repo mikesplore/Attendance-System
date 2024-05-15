@@ -36,5 +36,5 @@ Column(modifier = Modifier
 @Preview
 @Composable
 fun AnnouncementPreview(){
-    Announcements(rememberNavController())
+    Announcements(navController = rememberNavController())
 }

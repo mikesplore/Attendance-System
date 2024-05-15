@@ -50,43 +50,60 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun Student(navController: NavController) {
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text(text = "Student Profile") },
-                navigationIcon = {
-                    IconButton(onClick = {
-                        // Handle navigation icon click
-                    }) {
-                        Icon(Icons.Filled.Menu, contentDescription = "Menu")
-                    }
-                }
-            )
+fun Student(navController: NavController){
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val scope = rememberCoroutineScope()
+    ModalNavigationDrawer(
+        drawerState = drawerState,
+        drawerContent = {
+            ModalDrawerSheet { /* Drawer content */ }
         },
-        content = {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(brush), // Assuming brush is defined elsewhere
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Spacer(modifier = Modifier.height(70.dp)) // Height of the top app bar
-                HeaderContent()
-                BoxContent(navController)
+    ) {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "Student Profile") },
+                    navigationIcon = {
+                        IconButton(onClick = {
+                            // Handle navigation icon click
+                        }) {
+                            Icon(Icons.Filled.Menu, contentDescription = "Menu",
+                                modifier = Modifier.clickable {
+                                    scope.launch {
+                                        drawerState.apply {
+                                            if (isClosed) open() else close()
+                                        }
+                                    }
+
+
+                                })
+                        }
+                    }
+                )
+            },
+            content = {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(brush), // Assuming brush is defined elsewhere
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Spacer(modifier = Modifier.height(70.dp)) // Height of the top app bar
+                    HeaderContent()
+                    BoxContent(navController)
+
+                }
             }
-        }
-    )
+        )
+    }
 }
 
 @Composable
 fun HeaderContent() {
-    //this column has been partly covered by the top app bar
-    //fix it such that it shows below the top app bar
-    Column(
+       Column(
         modifier = Modifier
             .width(350.dp)
             .height(200.dp)
