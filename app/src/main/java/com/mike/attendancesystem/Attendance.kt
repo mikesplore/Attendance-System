@@ -33,6 +33,11 @@ fun Attendance(navController: NavController){
         }
     }
 }
+
+
+
+
+
 @Preview
 @Composable
 fun AttendancePreview(){
