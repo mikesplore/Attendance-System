@@ -225,7 +225,7 @@ fun HeaderContent() {
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         Image(
-            painter = painterResource(id = R.drawable.teacher),
+            painter = painterResource(id = R.drawable.student),
             contentDescription = "dp",
             modifier = Modifier
                 .clip(CircleShape)
