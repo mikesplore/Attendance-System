@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -32,6 +33,7 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -54,18 +56,33 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun Student(navController: NavController){
-    val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
+    val drawerState = rememberDrawerState(initialValue = DrawerValue.Open)
     val scope = rememberCoroutineScope()
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            ModalDrawerSheet { /* Drawer content */ }
+            ModalDrawerSheet {
+                Column(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(270.dp)
+                        .background(color = Color(0xffA0E9FF)),
+                    verticalArrangement = Arrangement.SpaceEvenly,
+                    horizontalAlignment = Alignment.CenterHorizontally
+
+                ){
+
+
+                }
+
+
+            }
         },
-    ) {
+        ) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(text = "Student Profile") },
+                    title = { Text(text = "Student Dashboard") },
                     navigationIcon = {
                         IconButton(onClick = {
                             // Handle navigation icon click
@@ -81,8 +98,10 @@ fun Student(navController: NavController){
 
                                 })
                         }
-                    }
+                    },
+                    colors = TopAppBarDefaults.smallTopAppBarColors(Color(0xffA0E9FF))
                 )
+
             },
             content = {
                 Column(
