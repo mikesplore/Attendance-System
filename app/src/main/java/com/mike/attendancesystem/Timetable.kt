@@ -12,9 +12,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Timetable(){
+fun Timetable(navController: NavController){
     Column(modifier = Modifier
         .background(brush)
         .fillMaxSize(),
@@ -30,5 +32,5 @@ fun Timetable(){
 @Preview
 @Composable
 fun TimetablePreview(){
-    Timetable()
+    Timetable(rememberNavController())
 }

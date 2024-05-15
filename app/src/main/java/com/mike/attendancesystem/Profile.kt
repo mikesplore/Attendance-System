@@ -73,7 +73,7 @@ Column(modifier = Modifier
 
                 .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly) {
-                SquareBox(imageName = painterResource(id = R.drawable.announcement), content = "Announcements",navController = navController, route ="announcement")
+                SquareBox(imageName = painterResource(id = R.drawable.announcement), content = "Announcements",navController = navController, route ="announcements")
                 SquareBox(imageName = painterResource(id = R.drawable.resources), content = "Resources",navController = navController, route ="resources")
 
             }
