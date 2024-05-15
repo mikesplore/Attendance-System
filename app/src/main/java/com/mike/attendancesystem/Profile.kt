@@ -32,95 +32,71 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun StudentProfile(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .background(Color.White) // Assuming brush is defined elsewhere
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        HeaderContent()
-        BoxContent(navController)
-    }
-}
-
-@Composable
-fun HeaderContent() {
-    Column(
-        modifier = Modifier
+    Column(modifier = Modifier
+        .background(brush)
+        .fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(modifier = Modifier
             .width(350.dp)
             .height(200.dp)
             .background(color = Color(0xffA0E9FF), shape = RoundedCornerShape(20.dp)),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Image(
-            painter = painterResource(id = R.drawable.teacher),
-            contentDescription = "dp",
-            modifier = Modifier
-                .clip(CircleShape)
-                .size(100.dp)
-        )
-        Text(
-            text = "BSCS/108J/2021",
-            color = Color.Black,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold
-        )
-    }
-}
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceEvenly) {
+            Image(painter = painterResource(id = R.drawable.teacher), contentDescription = "dp",
+                modifier = Modifier
+                    .clip(CircleShape)
+                    .size(100.dp))
 
-@Composable
-fun BoxContent(navController: NavController) {
-    Column(
-        modifier = Modifier
+            Text(text = "BSCS/108J/2021", color = Color.Black, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+
+        }
+        Column(modifier = Modifier
             .height(400.dp)
             .fillMaxWidth(),
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            SquareBox(
-                imageName = painterResource(id = R.drawable.timetable),
-                content = "Timetable",
-                route = "timetable",
-                navController = navController
-            )
-            SquareBox(
-                imageName = painterResource(id = R.drawable.attendance),
-                content = "Attendance",
-                route = "attendance",
-                navController = navController
-            )
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            SquareBox(
-                imageName = painterResource(id = R.drawable.announcement),
-                content = "Announcements",
-                route = "announcements",
-                navController = navController
-            )
-            SquareBox(
-                imageName = painterResource(id = R.drawable.resources),
-                content = "Resources",
-                route = "resources",
-                navController = navController
-            )
+            verticalArrangement = Arrangement.SpaceEvenly,) {
+            Row(modifier = Modifier
+
+                .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly) {
+                SquareBox(
+                    imageName = painterResource(id = R.drawable.timetable),
+                    content = "Timetable",
+
+                )
+                SquareBox(
+                    imageName = painterResource(id = R.drawable.attendance),
+                    content = "Attendance",
+
+                )
+
+            }
+            Row(modifier = Modifier
+
+                .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly) {
+                SquareBox(
+                    imageName = painterResource(id = R.drawable.announcement),
+                    content = "Announcements",
+
+                )
+                SquareBox(
+                    imageName = painterResource(id = R.drawable.resources),
+                    content = "Resources",
+
+                )
+
+            }
         }
     }
 }
-
 @Composable
 fun SquareBox(
     imageName: Painter,
     content: String,
-    route: String,
-    navController: NavController
+
 ) {
+    val image: Painter = imageName
+
     Box(
         modifier = Modifier
             .shadow(
@@ -129,20 +105,20 @@ fun SquareBox(
             )
             .background(color = Color(0xffA0E9FF))
             .size(150.dp)
-            .clickable { navController.navigate(route) }
+
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Box(
+            Column(
                 modifier = Modifier
                     .size(90.dp)
                     .background(color = Color(0xffCDF5FD), shape = CircleShape)
             ) {
                 Image(
-                    painter = imageName,
+                    painter = image,
                     contentDescription = "box content",
                     modifier = Modifier
                         .clip(CircleShape)
@@ -162,10 +138,8 @@ fun SquareBox(
 
 
 
-
 @Preview
 @Composable
 fun StudentProfilePreview() {
     StudentProfile(rememberNavController())
 }
-
