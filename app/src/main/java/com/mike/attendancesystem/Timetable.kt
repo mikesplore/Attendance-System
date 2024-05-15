@@ -30,5 +30,5 @@ fun Timetable(){
 @Preview
 @Composable
 fun TimetablePreview(){
-    Announcements()
+    Timetable()
 }
