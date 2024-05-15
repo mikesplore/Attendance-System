@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -161,7 +162,14 @@ fun Student(navController: NavController) {
             topBar = {
                 // Top app bar
                 TopAppBar(
-                    title = { Text(text = "Student Dashboard") },
+
+                    title = {
+                    Row(Modifier.width(290.dp),
+                        horizontalArrangement = Arrangement.Center){
+                        Text(text = "Dashboard",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color.Black,)} },
                     navigationIcon = {
                         // Menu icon to open/close the drawer
                         IconButton(onClick = {
@@ -254,13 +262,15 @@ fun BoxContent(navController: NavController) {
                 imageName = painterResource(id = R.drawable.timetable),
                 content = "Timetable",
                 route = "timetable",
-                navController = navController
+                navController = navController,
+                notificationCount = 0
             )
             SquareBox(
                 imageName = painterResource(id = R.drawable.attendance),
                 content = "Attendance",
                 route = "attendance",
-                navController = navController
+                navController = navController,
+                notificationCount = 10
             )
         }
         Row(
@@ -271,13 +281,15 @@ fun BoxContent(navController: NavController) {
                 imageName = painterResource(id = R.drawable.announcement),
                 content = "Announcements",
                 route = "announcement",
-                navController = navController
+                navController = navController,
+                notificationCount = 5
             )
             SquareBox(
                 imageName = painterResource(id = R.drawable.resources),
                 content = "Resources",
                 route = "resources",
-                navController = navController
+                navController = navController,
+                notificationCount = 15
             )
     }
     Row(
@@ -288,13 +300,15 @@ fun BoxContent(navController: NavController) {
             imageName = painterResource(id = R.drawable.assignment),
             content = "Assignments",
             route = "Assignments",
-            navController = navController
+            navController = navController,
+            notificationCount = 2
         )
         SquareBox(
             imageName = painterResource(id = R.drawable.discussion),
             content = "Discussion",
             route = "Discussion",
-            navController = navController
+            navController = navController,
+            notificationCount = 8
             )
         }
     }
@@ -305,7 +319,8 @@ fun SquareBox(
     imageName: Painter,
     content: String,
     route: String,
-    navController: NavController
+    navController: NavController,
+    notificationCount: Int // Notification counter variable
 ) {
     Box(
         modifier = Modifier
@@ -322,9 +337,28 @@ fun SquareBox(
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End) {
+                Box(
+                    modifier = Modifier
+                        .size(20.dp)
+                        .background(color = Color.Red, shape = CircleShape),
+                    contentAlignment = Alignment.Center
+
+                ) {
+                    Text(
+                        text = notificationCount.toString(),
+                        color = Color.White,
+                        fontSize = 12.sp
+                    )
+                }
+
+            }
+            // Main content: Image and Text
             Box(
                 modifier = Modifier
-                    .size(90.dp)
+                    .size(80.dp)
                     .background(color = Color(0xffCDF5FD), shape = CircleShape)
             ) {
                 Image(
@@ -341,9 +375,11 @@ fun SquareBox(
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold
             )
+
         }
     }
 }
+
 
 
 
