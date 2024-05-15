@@ -18,15 +18,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NavGraph()
-
+        NavGraph()
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun navpreview(){
+fun Navpreview(){
     NavGraph()
 }
 
