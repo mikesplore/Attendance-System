@@ -81,8 +81,14 @@ Column(modifier = Modifier
     }
 }
 @Composable
-fun SquareBox(imageName: Painter, content: String, navController: NavController, route: String) {
+fun SquareBox(
+    imageName: Painter,
+    content: String,
+    route: String,
+    navController: NavController
+) {
     val image: Painter = imageName
+
     Box(
         modifier = Modifier
             .shadow(
@@ -91,36 +97,36 @@ fun SquareBox(imageName: Painter, content: String, navController: NavController,
             )
             .background(color = Color(0xffA0E9FF))
             .size(150.dp)
-
-
+            .clickable { navController.navigate(route) }
     ) {
-        Column(modifier = Modifier.fillMaxSize(),
+        Column(
+            modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally){
-            Column(modifier = Modifier
-                .size(90.dp)
-                .background(color = Color(0xffCDF5FD), shape = CircleShape),) {
-
-            Image(
-                painter = image,
-                contentDescription = "box content",
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Column(
                 modifier = Modifier
-                    .clip(CircleShape)
                     .size(90.dp)
-        )}
-        Text(
-            text = content,
-            color = Color.Black,
-            fontSize = 18.sp,
-            fontWeight = FontWeight.SemiBold,
-
-
-
-        )
+                    .background(color = Color(0xffCDF5FD), shape = CircleShape)
+            ) {
+                Image(
+                    painter = image,
+                    contentDescription = "box content",
+                    modifier = Modifier
+                        .clip(CircleShape)
+                        .size(90.dp)
+                )
+            }
+            Text(
+                text = content,
+                color = Color.Black,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.SemiBold
+            )
         }
     }
-
 }
+
 
 
 
