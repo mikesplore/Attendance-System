@@ -31,7 +31,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun StudentProfile(navController: NavController) {
+fun Student(navController: NavController) {
     Column(modifier = Modifier
         .background(brush)
         .fillMaxSize(),
@@ -141,5 +141,5 @@ fun SquareBox(
 @Preview
 @Composable
 fun StudentProfilePreview() {
-    StudentProfile(rememberNavController())
+    Student(rememberNavController())
 }

@@ -19,7 +19,7 @@ fun  NavGraph(){
         composable("attendance"){Attendance(navController = navController)}
         composable("resources"){Resources(navController = navController)}
         composable("timetable"){Timetable(navController = navController)}
-        composable("StudentProfile"){ StudentProfile(navController = navController)}
+        composable("student"){Student(navController = navController)}
 
 
 
