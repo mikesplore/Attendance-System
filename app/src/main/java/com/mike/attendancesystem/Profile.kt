@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,8 +18,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
@@ -135,7 +138,7 @@ fun Student(navController: NavController) {
                         }
                     }
                     Row (modifier = Modifier
-                        .absolutePadding(0.dp,0.dp,0.dp,10.dp)
+                        .absolutePadding(0.dp, 0.dp, 0.dp, 10.dp)
                         .fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.Center
@@ -206,6 +209,9 @@ fun Student(navController: NavController) {
 
 @Composable
 fun HeaderContent() {
+    Box(modifier = Modifier.shadow(
+        elevation = 15.dp
+    )){
        Column(
         modifier = Modifier
             .width(350.dp)
@@ -228,16 +234,18 @@ fun HeaderContent() {
             fontWeight = FontWeight.Bold
         )
     }
+    }
 }
 
 @Composable
 fun BoxContent(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .height(400.dp)
-            .fillMaxWidth(),
-        verticalArrangement = Arrangement.SpaceEvenly
-    ) {
+        Column (modifier = Modifier
+
+            .fillMaxHeight(),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally){
+
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
@@ -271,9 +279,24 @@ fun BoxContent(navController: NavController) {
                 route = "resources",
                 navController = navController
             )
-
+    }
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
+        SquareBox(
+            imageName = painterResource(id = R.drawable.assignment),
+            content = "Assignments",
+            route = "Assignments",
+            navController = navController
+        )
+        SquareBox(
+            imageName = painterResource(id = R.drawable.discussion),
+            content = "Discussion",
+            route = "Discussion",
+            navController = navController
+            )
         }
-
     }
 }
 
