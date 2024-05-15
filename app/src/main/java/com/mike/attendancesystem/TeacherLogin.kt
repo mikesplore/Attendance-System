@@ -49,7 +49,7 @@ fun TeacherLogin(navController: NavController) {
     var email: String = ""
     Column(modifier = Modifier
         .fillMaxSize()
-        .background(brush),
+        .background(TeacherBrush),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
         Box(
@@ -130,7 +130,7 @@ fun TeacherLogin(navController: NavController) {
             .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically){
-            Button(onClick = { navController.navigate("Student") },
+            Button(onClick = { navController.navigate("TeacherDashboard") },
                 modifier = Modifier
                     .width(120.dp)
                     .height(50.dp)
@@ -139,7 +139,7 @@ fun TeacherLogin(navController: NavController) {
                         shape = RoundedCornerShape(20.dp),
                     ),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xff00A9FF))
+                    containerColor = Color(0xff6420AA))
                 ) {
                 Text(text = "Sign in",
                     color = Color.White,
@@ -160,7 +160,7 @@ fun TeacherLogin(navController: NavController) {
                 verticalAlignment = Alignment.CenterVertically) {
             Text(text = "Don't have an account? ")
             Text(text = "Register",
-                color = Color(0xff00A9FF),
+                color = Color(0xff6420AA),
                 modifier = Modifier.clickable{
                     navController.navigate("TeacherRegister")
                 })}
@@ -169,7 +169,7 @@ fun TeacherLogin(navController: NavController) {
                 horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(text = "Are you a student? ")
                 Text(text = "Click here",
-                    color = Color(0xff00A9FF),
+                    color = Color(0xff6420AA),
                     modifier = Modifier.clickable{
                         navController.navigate("StudentLogin")
                     }

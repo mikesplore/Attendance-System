@@ -124,7 +124,7 @@ fun StudentDashboard(navController: NavController) {
                                     color = Color.Black,
                                 )
                                 Text(
-                                    "BSCS/108J/2021",
+                                    "BSCS/001J/2021",
                                     fontSize = 20.sp,
                                     fontWeight = FontWeight.Bold,
                                     color = Color.Black,
@@ -232,7 +232,7 @@ fun HeaderContent() {
                 .size(100.dp)
         )
         Text(
-            text = "BSCS/108J/2021",
+            text = "BSCS/001J/2024",
             color = Color.Black,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
