@@ -1,5 +1,6 @@
 package com.mike.attendancesystem
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -7,14 +8,23 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,21 +40,40 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Student(navController: NavController) {
-    Column(
-        modifier = Modifier
-            .background(brush) // Assuming brush is defined elsewhere
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        HeaderContent()
-        BoxContent(navController)
-    }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Student Profile") },
+                navigationIcon = {
+                    IconButton(onClick = { /* Navigate to side menu */ }) {
+                        Icon(Icons.Filled.Menu, contentDescription = "Menu")
+                    }
+                }
+            )
+        },
+        content = {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(brush), // Assuming brush is defined elsewhere
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.height(70.dp)) // Height of the top app bar
+                HeaderContent()
+                BoxContent(navController)
+            }
+        }
+    )
 }
 
 @Composable
 fun HeaderContent() {
+    //this column has been partly covered by the top app bar
+    //fix it such that it shows below the top app bar
     Column(
         modifier = Modifier
             .width(350.dp)
@@ -101,7 +130,7 @@ fun BoxContent(navController: NavController) {
             SquareBox(
                 imageName = painterResource(id = R.drawable.announcement),
                 content = "Announcements",
-                route = "announcements",
+                route = "announcement",
                 navController = navController
             )
             SquareBox(
