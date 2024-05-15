@@ -1,6 +1,8 @@
 package com.mike.attendancesystem
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -19,10 +21,25 @@ fun  NavGraph(){
         composable("attendance"){Attendance(navController = navController)}
         composable("resources"){Resources(navController = navController)}
         composable("timetable"){Timetable(navController = navController)}
-        composable("Student"){Student(navController = navController)}
+        composable("StudentDashboard"){StudentDashboard(navController = navController)}
 
 
 
     }
 
 }
+
+val StudentBrush = Brush.verticalGradient(
+    colors = listOf(
+        Color(0xff89CFF3),
+        Color(0xffCDF5FD)
+
+    )
+)
+
+val TeacherBrush = Brush.verticalGradient(
+    colors = listOf(
+        Color(0xffFF7ED4),
+        Color(0xffFFB5DA)
+    )
+)

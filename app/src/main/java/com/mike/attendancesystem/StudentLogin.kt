@@ -129,7 +129,7 @@ fun StudentLogin(navController: NavController) {
             .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically){
-            Button(onClick = { navController.navigate("Student") },
+            Button(onClick = { navController.navigate("StudentDashboard") },
                 modifier = Modifier
                     .width(120.dp)
                     .height(50.dp)

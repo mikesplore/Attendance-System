@@ -33,6 +33,11 @@ fun Timetable(navController: NavController){
         }
     }
 }
+
+
+
+
+
 @Preview
 @Composable
 fun TimetablePreview(){

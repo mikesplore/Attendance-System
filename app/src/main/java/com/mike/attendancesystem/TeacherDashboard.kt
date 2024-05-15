@@ -32,7 +32,6 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
@@ -55,7 +54,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun Student(navController: NavController) {
+fun TeacherDashboard(navController: NavController) {
     // Define drawer state and coroutine scope
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -70,14 +69,14 @@ fun Student(navController: NavController) {
                     modifier = Modifier
                         .fillMaxHeight()
                         .width(270.dp)
-                        .background(color = Color(0xffA0E9FF)),
+                        .background(color = Color(0xffFFB5DA)),
                     verticalArrangement = Arrangement.SpaceBetween,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     // Content of the drawer
                     Column(
                         modifier = Modifier
-                            .background(Color(0xff89CFF3), shape = RoundedCornerShape(10.dp))
+                            .background(Color(0xffFF7ED4), shape = RoundedCornerShape(10.dp))
                             .height(250.dp)
                             .fillMaxWidth()
                     ) {
@@ -145,7 +144,7 @@ fun Student(navController: NavController) {
                             fontWeight = FontWeight.SemiBold,
                             color = Color.Black,
                             modifier = Modifier.clickable{
-                                navController.navigate("StudentLogin")
+                                navController.navigate("TeacherLogin")
                             })
                     }
                 }
@@ -190,7 +189,7 @@ fun Student(navController: NavController) {
                     },
                     // Set top app bar colors
                     colors = topAppBarColors(
-                    Color(0xffA0E9FF)
+                    Color(0xffFF3EA5)
                     )
                 )
             },
@@ -199,12 +198,12 @@ fun Student(navController: NavController) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(brush), // Assuming brush is defined elsewhere
+                        .background(TeacherBrush), // Assuming brush is defined elsewhere
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Spacer(modifier = Modifier.height(70.dp)) // Height of the top app bar
-                    HeaderContent() // Content for the header
-                    BoxContent(navController) // Content for the main section
+                    TeacherHeaderContent() // Content for the header
+                    TeacherBoxContent(navController) // Content for the main section
                 }
             }
         )
@@ -213,7 +212,7 @@ fun Student(navController: NavController) {
 
 
 @Composable
-fun HeaderContent() {
+fun TeacherHeaderContent() {
     Box(modifier = Modifier.shadow(
         elevation = 15.dp
     )){
@@ -221,7 +220,7 @@ fun HeaderContent() {
         modifier = Modifier
             .width(350.dp)
             .height(200.dp)
-            .background(color = Color(0xffA0E9FF), shape = RoundedCornerShape(20.dp)),
+            .background(color = Color(0xff6420AA), shape = RoundedCornerShape(20.dp)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
@@ -233,8 +232,8 @@ fun HeaderContent() {
                 .size(100.dp)
         )
         Text(
-            text = "BSCS/108J/2021",
-            color = Color.Black,
+            text = "TUM/0052/2020",
+            color = Color.White,
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold
         )
@@ -243,7 +242,7 @@ fun HeaderContent() {
 }
 
 @Composable
-fun BoxContent(navController: NavController) {
+fun TeacherBoxContent(navController: NavController) {
         Column (modifier = Modifier
 
             .fillMaxHeight(),
@@ -255,13 +254,13 @@ fun BoxContent(navController: NavController) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            SquareBox(
+            TSquareBox(
                 imageName = painterResource(id = R.drawable.timetable),
                 content = "Timetable",
                 route = "timetable",
                 navController = navController,
             )
-            SquareBox(
+            TSquareBox(
                 imageName = painterResource(id = R.drawable.attendance),
                 content = "Attendance",
                 route = "attendance",
@@ -272,13 +271,13 @@ fun BoxContent(navController: NavController) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            SquareBox(
+            TSquareBox(
                 imageName = painterResource(id = R.drawable.announcement),
                 content = "Announcements",
                 route = "announcement",
                 navController = navController,
             )
-            SquareBox(
+            TSquareBox(
                 imageName = painterResource(id = R.drawable.resources),
                 content = "Resources",
                 route = "resources",
@@ -290,26 +289,20 @@ fun BoxContent(navController: NavController) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceEvenly
     ) {
-        SquareBox(
+        TSquareBox(
             imageName = painterResource(id = R.drawable.assignment),
             content = "Assignments",
             route = "Assignments",
             navController = navController,
 
         )
-        SquareBox(
-            imageName = painterResource(id = R.drawable.discussion),
-            content = "Discussion",
-            route = "Discussion",
-            navController = navController,
 
-            )
         }
     }
 }
 
 @Composable
-fun SquareBox(
+fun TSquareBox(
     imageName: Painter,
     content: String,
     route: String,
@@ -321,7 +314,7 @@ fun SquareBox(
                 elevation = 15.dp,
                 shape = RoundedCornerShape(10.dp)
             )
-            .background(color = Color(0xffA0E9FF))
+            .background(color = Color(0xffFF3EA5))
             .size(150.dp)
             .clickable { navController.navigate(route) }
     ) {
@@ -334,7 +327,7 @@ fun SquareBox(
             Box(
                 modifier = Modifier
                     .size(80.dp)
-                    .background(color = Color(0xffCDF5FD), shape = CircleShape)
+                    .background(color = Color(0xffFFB5DA), shape = CircleShape)
             ) {
                 Image(
                     painter = imageName,
@@ -346,7 +339,7 @@ fun SquareBox(
             }
             Text(
                 text = content,
-                color = Color.Black,
+                color = Color.White,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.SemiBold
             )
@@ -365,6 +358,6 @@ fun SquareBox(
 
 @Preview
 @Composable
-fun StudentProfilePreview() {
-    Student(rememberNavController())
+fun TeacherProfilePreview() {
+    TeacherDashboard(rememberNavController())
 }
